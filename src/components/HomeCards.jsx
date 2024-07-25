@@ -2,7 +2,7 @@ import Card from "./Card";
 
 const HomeCards = () => {
   return (
-    <div className="container mx-auto py-6">
+    <div className="container mx-auto py-10">
       <div className="grid grid-cols-2 gap-3">
         <Card>
           <h2 className="text-xl font-bold">For Developers</h2>
@@ -11,7 +11,7 @@ const HomeCards = () => {
           </p>
           <a
             href=""
-            className="px-3 py-2 bg-black text-white border-none rounded-md inline-block"
+            className="px-3 py-2 bg-black text-sm text-white border-none rounded-md inline-block"
           >
             Browse Jobs
           </a>
@@ -24,7 +24,7 @@ const HomeCards = () => {
           </p>
           <a
             href=""
-            className="px-3 py-2 bg-indigo-600 text-white border-none rounded-md inline-block"
+            className="px-3 py-2 bg-indigo-600 text-sm text-white border-none rounded-md inline-block"
           >
             Add Job
           </a>

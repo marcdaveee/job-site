@@ -1,3 +1,10 @@
+import { NavLink } from "react-router-dom";
+
+const activeLinkClass = ({ isActive }) =>
+  isActive
+    ? "bg-slate-950 text-sm px-2 py-2 border-none rounded-md font-medium "
+    : "text-sm px-2 py-2 border-none rounded-md font-medium ";
+
 const Navbar = () => {
   return (
     <nav className="w-full bg-blue-600 py-5 text-white border-b border-gray-400">
@@ -7,30 +14,21 @@ const Navbar = () => {
         </h1>
         <ul className="flex space-x-4">
           <li>
-            <a
-              href=""
-              className="text-sm px-2 py-2 border-none rounded-md font-medium bg-slate-950"
-            >
+            <NavLink to="/" className={activeLinkClass}>
               Home
-            </a>
+            </NavLink>
           </li>
 
           <li>
-            <a
-              href=""
-              className="text-sm px-2 py-2 border-none rounded-md font-medium  "
-            >
+            <NavLink to="/jobs" className={activeLinkClass}>
               Jobs
-            </a>
+            </NavLink>
           </li>
 
           <li>
-            <a
-              href=""
-              className="text-sm px-2 py-2 border-none rounded-md font-medium "
-            >
+            <NavLink to="/new-job" className={activeLinkClass}>
               Add Job
-            </a>
+            </NavLink>
           </li>
         </ul>
       </div>
