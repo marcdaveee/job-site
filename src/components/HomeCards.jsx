@@ -2,7 +2,7 @@ import Card from "./Card";
 
 const HomeCards = () => {
   return (
-    <div className="container mx-auto py-10">
+    <div className="max-w-7xl mx-auto py-10">
       <div className="grid grid-cols-2 gap-3">
         <Card>
           <h2 className="text-xl font-bold">For Developers</h2>

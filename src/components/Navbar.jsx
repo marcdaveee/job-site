@@ -7,8 +7,8 @@ const activeLinkClass = ({ isActive }) =>
 
 const Navbar = () => {
   return (
-    <nav className="w-full bg-blue-600 py-5 text-white border-b border-gray-400">
-      <div className="container mx-auto flex justify-between items-center">
+    <nav className=" bg-blue-600 py-5 text-white border-b border-gray-400">
+      <div className="max-w-7xl mx-auto flex justify-between items-center">
         <h1 className="text-xl font-bold">
           <i className="fa-brands fa-react"></i> React Jobs
         </h1>

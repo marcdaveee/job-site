@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
-const JobListing = ({ job }) => {
+const JobListing = ({ job, isInHomePage }) => {
   const [isSeeMore, setIsSeeMore] = useState(false);
 
   const description = isSeeMore
@@ -23,11 +24,20 @@ const JobListing = ({ job }) => {
         </button>
       </div>
 
-      <div className="flex flex-col justify-start my-4">
+      <div
+        className={
+          isInHomePage
+            ? "flex flex-col justify-start my-4"
+            : "flex justify-between my-4"
+        }
+      >
         <p className="text-red-700 text-sm mb-2">{job.location}</p>
-        <a className="bg-indigo-500 hover:bg-indigo-600 inline-block text-center cursor-pointer py-2 text-white border-none rounded-md text-sm font-medium">
+        <Link
+          to={"/jobs/" + job.id}
+          className="bg-indigo-500 hover:bg-indigo-600 inline-block text-center cursor-pointer py-2 px-1 text-white border-none rounded-md text-sm font-medium"
+        >
           Read More
-        </a>
+        </Link>
       </div>
     </div>
   );

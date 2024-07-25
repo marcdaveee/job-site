@@ -1,26 +1,12 @@
-import { useState, useEffect } from "react";
 import JobListing from "./JobListing";
+import useFetchJobs from "../hooks/useFetchJobs";
 
 const JobListings = ({ isInHomePage }) => {
-  const [jobs, setJobs] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { jobData, isLoading, error } = useFetchJobs(
+    "http://localhost:5000/jobs"
+  );
 
-  useEffect(() => {
-    const fetchJobs = async () => {
-      try {
-        const res = await fetch("http://localhost:5000/jobs");
-        const data = await res.json();
-        const jobData = isInHomePage ? data.slice(0, 6) : data;
-        setJobs(jobData);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    fetchJobs();
-  }, []);
+  const jobs = isInHomePage ? jobData.slice(0, 6) : jobData;
 
   return (
     <section className="bg-blue-100 py-7">
@@ -33,16 +19,21 @@ const JobListings = ({ isInHomePage }) => {
           <div className="text-3xl text-black text-center">Loading...</div>
         )}
 
+        {error && (
+          <div className="text-3xl text-black text-center">
+            Failed to load data. Please check your internet connection and
+            requested path URL.
+          </div>
+        )}
+
         {jobs && (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
             {jobs.map((job) => (
-              <JobListing job={job} key={job.id} />
+              <JobListing job={job} isInHomePage={isInHomePage} key={job.id} />
             ))}
           </div>
         )}
       </div>
-
-      <div></div>
     </section>
   );
 };
