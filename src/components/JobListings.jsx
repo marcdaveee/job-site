@@ -20,7 +20,7 @@ const JobListings = ({ isInHomePage }) => {
         )}
 
         {error && (
-          <div className="text-3xl text-black text-center">
+          <div className="text-sm italic text-black text-center">
             Failed to load data. Please check your internet connection and
             requested path URL.
           </div>

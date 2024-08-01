@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Card from "./Card";
 
 const HomeCards = () => {
@@ -9,12 +10,12 @@ const HomeCards = () => {
           <p className="text-base my-3">
             Browse our React Jobs and start your career today
           </p>
-          <a
-            href=""
+          <Link
+            to="/jobs"
             className="px-3 py-2 bg-black text-sm text-white border-none rounded-md inline-block"
           >
             Browse Jobs
-          </a>
+          </Link>
         </Card>
 
         <Card bgColor="bg-indigo-100">
@@ -22,12 +23,12 @@ const HomeCards = () => {
           <p className="text-base my-3 font-medium">
             List your job to find the perfect developer for the role.
           </p>
-          <a
-            href=""
+          <Link
+            to={"/new-job"}
             className="px-3 py-2 bg-indigo-600 text-sm text-white border-none rounded-md inline-block"
           >
             Add Job
-          </a>
+          </Link>
         </Card>
       </div>
     </div>

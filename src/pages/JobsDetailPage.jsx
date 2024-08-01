@@ -1,14 +1,30 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import Card from "../components/Card";
+import { toast } from "react-toastify";
 
 import { useState, useEffect } from "react";
 
-const JobsDetailPage = () => {
+const JobsDetailPage = ({ onJobDelete }) => {
+  const navigate = useNavigate();
   const { id } = useParams();
 
   const [job, setJob] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const onJobDeleteClick = (jobId) => {
+    const confirm = window.confirm(
+      "Are you sure you want to delete this listing?"
+    );
+
+    if (!confirm) return;
+
+    onJobDelete(jobId);
+
+    toast.success("Job deleted successfully");
+
+    navigate("/jobs");
+  };
 
   useEffect(() => {
     const fetchJobData = async () => {
@@ -82,13 +98,16 @@ const JobsDetailPage = () => {
                 <h2 className="font-bold text-md mb-3">Manage Job</h2>
                 <div className="flex flex-col space-y-3">
                   <Link
-                    to={"/jobs/edit"}
+                    to={"/jobs/edit/" + job.id}
                     className="bg-indigo-600 text-white text-sm font-semibold py-1 border-none rounded-lg inline-block text-center"
                   >
                     Edit Job
                   </Link>
 
-                  <button className="bg-red-500 text-white text-sm font-semibold py-1 border-none rounded-lg inline-block text-center">
+                  <button
+                    className="bg-red-500 text-white text-sm font-semibold py-1 border-none rounded-lg inline-block text-center"
+                    onClick={() => onJobDeleteClick(job.id)}
+                  >
                     Delete Job
                   </button>
                 </div>
